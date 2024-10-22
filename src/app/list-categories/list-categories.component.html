@@ -1,0 +1,25 @@
+<!---interpolation ----><!--{{ message }}---->
+<!--- event-binding----><!---<button (click)="f(' **test')">test</button>---->
+<!--property-binding ---><!----<input [value]="message">---->
+<!--two-way-binding ---><!---<input [(ngModel)]="message">---->
+Recherche : <input [(ngModel)]="titre"> {{titre}}
+<!----<p>La date est : {{ myDate | date:'yyyy-MM-dd' }}</p>--->
+<div class="container">
+  <div class="row">
+    <div *ngFor="let category of categories | contains:titre " class="col-md-4" style="margin-bottom: 20px;">
+     <!--- <ng-container *ngIf="category.title.includes(titre)">---->
+      <img (click)="getDescription(category.description)" [src]="category.image" [alt]="category.title" class="img-fluid h-50 w-75">
+      <h3 appHighlight>{{category.title | uppercase}} </h3>
+     <!-- <button *ngIf="category.available" class="btn btn-primary">Voir produits</button>--->
+     <a [routerLink]="['details',category.id]">details</a>
+     <button [routerLink]="['/productsCategory',category.id, category.title]"
+       [hidden]="!category.available" class="btn btn-primary">Voir produits</button>
+       <button [routerLink]="['/products']" [queryParams]="{id:category.id}"
+       [hidden]="!category.available" class="btn btn-primary">Voir produits</button>
+        <span *ngIf="!category.available">Catégorie non disponible</span>
+      <!---</ng-container>--->
+      </div>
+ </div>
+</div>
+
+<router-outlet></router-outlet>

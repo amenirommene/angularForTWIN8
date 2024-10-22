@@ -1,0 +1,33 @@
+
+<!---
+  <p [ngClass]="{'maclasse1': isAdmin, 'maclasse2': !isAdmin}">
+  Ce texte changera de style en fonction de la valeur de isError
+</p>
+--->
+
+
+<nav [ngClass]="isAdmin ? classAdmin : classNotAdmin">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">TWINStore</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="home">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="product">Produits</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="apropos">A propos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
