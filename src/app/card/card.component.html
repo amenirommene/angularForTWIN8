@@ -1,0 +1,13 @@
+<!--- <ng-container *ngIf="category.title.includes(titre)">---->
+  <img (click)="getDescription(category.description)" [src]="category.image" [alt]="category.title" class="img-fluid h-50 w-75">
+  <h3 appHighlight>{{category.title | uppercase}} </h3>
+ <!-- <button *ngIf="category.available" class="btn btn-primary">Voir produits</button>--->
+ <a [routerLink]="['details',category.id]">details</a>
+ <button [routerLink]="['/productsCategory',category.id, category.title]"
+   [hidden]="!category.available" class="btn btn-primary">Voir produits</button>
+   <button (click)="addToShortList()">add short list</button>
+   <button (click)="sendNotif()">Send notif</button>
+   <button [routerLink]="['/products']" [queryParams]="{id:category.id}"
+   [hidden]="!category.available" class="btn btn-primary">Voir produits</button>
+    <span *ngIf="!category.available">Catégorie non disponible</span>
+  <!---</ng-container>--->

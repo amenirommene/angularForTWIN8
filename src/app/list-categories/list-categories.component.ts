@@ -1,5 +1,7 @@
+import { CardComponent } from './../card/card.component';
 import { Category } from './../models/category';
-import { Component } from '@angular/core';
+import { Component, QueryList, ViewChildren } from '@angular/core';
+import { shortList } from '../models/shortlist';
 
 @Component({
   selector: 'app-list-categories',
@@ -7,15 +9,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./list-categories.component.css']
 })
 export class ListCategoriesComponent {
+list : shortList[]=[];
 titre : string = "";
 message : string = "Ceci est un test";
 myDate : Date = new Date(2024,6,6);
+@ViewChildren(CardComponent) children: QueryList<CardComponent>;
+  ngAfterViewInit() {
+    this.children.forEach(child => {
+      console.log('Child component:', child.title);
+    })
+
+  }
 f(val:string){
   console.log("event binding" + val);
 }
-getDescription(desc:string){
-  alert(desc);
+addToShortList(elt:shortList){
+this.list.push(elt);
+console.log(this.list);
 }
+getNotif(ch){
+  alert ("bonjour " + ch.code + " " + ch.msg);
+}
+
 categories : Category[]= [
 {"id":1,"title":"Grand électroménager", "image":"assets/images/categorie_electromenager.jpg", "description":"description 1", "available":true},
 {"id":2,"title":"Petit électroménager", "image":"assets/images/categorie_petit_electromenager.jpg", "description":"description 2", "available":true},

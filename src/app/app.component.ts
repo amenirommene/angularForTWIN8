@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { HeaderComponent } from './header/header.component';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AngularTWIN8';
+  @ViewChild(HeaderComponent) myChild:HeaderComponent;
+  ngAfterViewInit(){
+    console.log(this.myChild.isAdmin);
+  }
 }

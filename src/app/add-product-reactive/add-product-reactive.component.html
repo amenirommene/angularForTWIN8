@@ -1,0 +1,15 @@
+<form [formGroup]="myForm">
+ name : <input  formControlName="namep" > <br>
+ <div *ngIf="name.errors">
+ <div *ngIf="name.errors['required']">Name obligatoire </div>
+ <div *ngIf="name.errors['minlength']">Minimum 5 caractères </div>
+</div>
+ description : <textarea formControlName="descriptionp"></textarea>  <br>
+ <div *ngIf="description.invalid && description.touched">
+description obligatoire
+ </div>
+ price :  <input formControlName="pricep"> <br>
+<button [disabled]="myForm.invalid">Save</button>
+</form>
+{{myForm.get('namep').value}}
+<input [formControl]="nametest">
