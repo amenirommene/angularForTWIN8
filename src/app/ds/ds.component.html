@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row" >
+    <div class="col-md-4" style="margin-bottom: 20px"   *ngFor="let p of products"  >
+        <ul>
+          <li myDirective>{{ p.name}}</li>
+          <li>{{ p.price}}</li>
+          <li>{{ p.available| myPipe }}</li>
+          <li>{{ p.releaseDate}}</li>
+        </ul>
+
+</div></div></div>
+
+

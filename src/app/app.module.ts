@@ -19,7 +19,10 @@ import { DetailsComponent } from './details/details.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AddProductReactiveComponent } from './add-product-reactive/add-product-reactive.component';
 import { CardComponent } from './card/card.component';
-
+import { MyPipePipe } from './my-pipe.pipe';
+import { MyDirective } from './my.directive';
+import { DsComponent } from './ds/ds.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     //la liste des composants
@@ -30,13 +33,14 @@ import { CardComponent } from './card/card.component';
     HomeComponent,
     ListCategoriesComponent,
     ContainsPipe,//pipe
-    HighlightDirective, TestComponent, NotFoundComponent, ProductsCategoryComponent, ProductQPCategoryComponent, DetailsComponent, AddProductComponent, AddProductReactiveComponent, CardComponent //directive
+    HighlightDirective, TestComponent, NotFoundComponent, ProductsCategoryComponent, ProductQPCategoryComponent, DetailsComponent, AddProductComponent, AddProductReactiveComponent, CardComponent, MyPipePipe, MyDirective, DsComponent //directive
   ],
   imports: [ //la liste des modules qu'on a besoin
     BrowserModule,
     AppRoutingModule,
     FormsModule ,//pour pouvoir utiliser ngModel
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
