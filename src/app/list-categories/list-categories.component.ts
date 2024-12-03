@@ -37,8 +37,8 @@ getNotif(ch){
 categories : Category[]= [];
 ngOnInit(){
   //appel synchrone
-  this.categories = this.cs.getListCategories();
-/*this.cs.getListCategoriesFromBackend().subscribe(
-  res=>this.categories=res);*/
+//  this.categories = this.cs.getListCategories();
+ this.cs.getListCategoriesFromBackend().subscribe(
+  res=>this.categories=res);
 }
 }

@@ -1,5 +1,7 @@
+import { Category } from './../models/category';
 import { ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
+import { CategoryService } from '../services/category.service';
 
 @Component({
   selector: 'app-details',
@@ -8,7 +10,8 @@ import { Component } from '@angular/core';
 })
 export class DetailsComponent {
   id : number ;
-  constructor(private ac:ActivatedRoute){
+  category : Category = new Category();
+  constructor(private ac:ActivatedRoute, private cs:CategoryService){
     console.log("je suis le constructor");
   }
 
@@ -18,8 +21,11 @@ export class DetailsComponent {
   //  console.log(this.ac.snapshot.params);
     this.ac.paramMap.subscribe(res=>{
     this.id=Number(res.get('id'));
-
+    this.cs.getCategoryById(this.id).subscribe(
+      res=>this.category=res);
    });
+
+
   //  this.ac.params.subscribe(res=>{this.id=res['name']; console.log(res)});
   }
 }

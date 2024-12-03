@@ -22,6 +22,8 @@ export class ProductsCategoryComponent implements OnInit {
   //  console.log(this.ac.snapshot.params);
     this.ac.paramMap.subscribe(res=>{
     this.id=Number(res.get('id'));
+    this.cs.getListProductsByCategory(this.id).subscribe(
+      res=>this.list=res);
    /* for(let p of this.listProducts){
       if (p.categoryId == this.id){
        this.list.push(p);

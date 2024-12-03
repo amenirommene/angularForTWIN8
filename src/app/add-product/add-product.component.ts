@@ -1,3 +1,4 @@
+import { CategoryService } from './../services/category.service';
 import { Product } from './../models/product';
 import { Component } from '@angular/core';
 
@@ -8,7 +9,11 @@ import { Component } from '@angular/core';
 })
 export class AddProductComponent {
 p: Product=new Product();
+constructor(private catserv:CategoryService){
+
+}
 addP(){
+  this.catserv.addProduct(this.p).subscribe();
   console.log(this.p);
 }
 }

@@ -11,6 +11,8 @@ import { Observable } from 'rxjs';
 })
 export class CategoryService {
 
+  apiUrl="http://localhost:3000/categories";
+  apiUrlProduct = "http://localhost:3000/products";
   constructor(private http:HttpClient) { }
 
   getListCategories() :  Category[]{
@@ -25,10 +27,24 @@ export class CategoryService {
   }
 
   getListCategoriesFromBackend() : Observable<Category[]> {
-   return this.http.get<Category[]>("http://localhost:3000/categories");
+   return this.http.get<Category[]>(this.apiUrl);
 }
 
-getListProductsByCategory(id:string) : Observable<Product[]> {
-  return this.http.get<Product[]>("http://localhost:3000/products?categoryId="+id);
+getListProductsByCategory(id:number) : Observable<Product[]> {
+  return this.http.get<Product[]>(this.apiUrlProduct + "?categoryId="+ id);
+}
+
+
+getCategoryById(id : number) : Observable<Category> {
+   return this.http.get<Category>(this.apiUrl + "/" + id);
+}
+
+addProduct(p:Product):Observable<Product>{
+  return this.http.post<Product>(this.apiUrlProduct,p);
+
+}
+
+deleteProduct(id:number):Observable<Product>{
+  return this.http.delete<Product>(this.apiUrlProduct + "/" + id);
 }
 }

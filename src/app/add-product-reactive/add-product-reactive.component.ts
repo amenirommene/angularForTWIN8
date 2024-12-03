@@ -1,3 +1,5 @@
+import { Product } from './../models/product';
+import { CategoryService } from './../services/category.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -9,6 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AddProductReactiveComponent {
   nametest = new FormControl('test');
   myForm : FormGroup;
+  constructor(private cs:CategoryService){}
   ngOnInit(){
     this.myForm=new FormGroup({
       namep : new FormControl("test",[Validators.required, Validators.minLength(5)]),
@@ -25,5 +28,14 @@ export class AddProductReactiveComponent {
   }
   get description(){
     return this.myForm.get('descriptionp');
+  }
+
+  addProduct(){
+    let p : Product = new Product();
+    p.name=this.name.value;
+    p.description=this.description.value;
+    p.price=this.price.value;
+    console.log(this.myForm.value)
+    this.cs.addProduct(p).subscribe();
   }
 }
