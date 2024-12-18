@@ -4,12 +4,13 @@
 <!--two-way-binding ---><!---<input [(ngModel)]="message">---->
 Recherche : <input [(ngModel)]="titre"> {{titre}}
 <!----<p>La date est : {{ myDate | date:'yyyy-MM-dd' }}</p>--->
+
 <div class="container">
   <div class="row">
-    <div *ngFor="let category of categories | contains:titre " class="col-md-4" style="margin-bottom: 20px;">
-    <app-card  (add)="addToShortList($event)" (notified)="getNotif($event)" [category]="category"></app-card>
+    <div *ngFor="let categoryparent of categories | contains:titre " class="col-md-4" style="margin-bottom: 20px;">
+    <app-card  (addMe)="addToShortList($event)" (notified)="getNotification($event)" [category]="categoryparent"></app-card>
       </div>
  </div>
 </div>
 
-<router-outlet></router-outlet>
+

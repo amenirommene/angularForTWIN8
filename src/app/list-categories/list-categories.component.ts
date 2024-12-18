@@ -30,7 +30,7 @@ addToShortList(elt:shortList){
 this.list.push(elt);
 console.log(this.list);
 }
-getNotif(ch){
+getNotification(ch){
   alert ("bonjour " + ch.code + " " + ch.msg);
 }
 

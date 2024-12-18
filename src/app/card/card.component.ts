@@ -11,14 +11,14 @@ export class CardComponent {
   title : string = "tesst";
   @Input() category: Category;
   @Output() notified = new EventEmitter<any>();
-  @Output() add = new EventEmitter<shortList>();
+  @Output() addMe = new EventEmitter<shortList>();
   getDescription(desc:string){
     alert(desc);
   }
   addToShortList(){
     let x : shortList = {id: 1, idUser:1, idElement:this.category.id,
        typeElement:'category' }
-    this.add.emit(x);
+    this.addMe.emit(x);
   }
   sendNotif(){
     this.notified.emit({"msg":"success", "code":400});
